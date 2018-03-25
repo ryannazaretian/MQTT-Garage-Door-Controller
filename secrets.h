@@ -1,9 +1,11 @@
 #include <stdint.h>
+#include <EthernetV2_0.h>
 
-#define USERNAME    "myUser"
-#define PASSWORD    "mypass"
-const uint8_t MAC_ADDRESS[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB};
-#define SERVER_IP   192,168,215,110
+#define USERNAME    "username"
+#define PASSWORD    "password"
 #define SERVER_PORT 1883
-#define CLIENT_IP   192,168,215,103
+
+const uint8_t MAC_ADDRESS[] = {0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02};
+const IPAddress SERVER_IP(/*Your serer's IP Address*/);
+const IPAddress CLIENT_IP(/*Your client's Static IP Address8/);
 

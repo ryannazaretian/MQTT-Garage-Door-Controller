@@ -34,8 +34,6 @@
 #define ETH_RESET_WAIT 2500
 #define ETH_CONNECT_WAIT 1000
 EthernetClient ethClient;
-const IPAddress server(SERVER_IP);
-const IPAddress client_ip(CLIENT_IP);
 
 // MQTT Setup
 #define MQTT_STATE_RESET_WAIT 5000
@@ -378,7 +376,7 @@ void setup() {
 
 	// Setup MQTT
 	status.setStatus(STATUS_BLINK_RED);
-	client.setServer(server, SERVER_PORT);
+	client.setServer(SERVER_IP, SERVER_PORT);
 	client.setCallback(mqtt_callback);
 
 }
