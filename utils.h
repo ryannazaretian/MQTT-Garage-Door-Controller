@@ -1,0 +1,56 @@
+#ifndef UTILS_H
+#define UTILS_H
+
+#define BINARY_SENSOR(val) (val ? "ON": "OFF")
+
+//#define SET_BIT(val, mask) (val |= mask)
+//#define CLR_BIT(val, mask) (val &= ~mask)
+//#define TEST_BIT(val, mask) (val & mask)
+//#define TOGGLE_BIT(val, mask) (val ^= mask)
+
+#ifdef DEBUG
+#define START_SERIAL(val) Serial.begin(val)
+#define SERIAL_PRINT(...) Serial.print(__VA_ARGS__)
+#define SERIAL_PRINTLN(...) Serial.println(__VA_ARGS__)
+#else
+#define START_SERIAL(val)
+#define SERIAL_PRINT(val, ...)
+#define SERIAL_PRINTLN(val, ...)
+#endif
+
+#define DECIMAL 10
+
+#define ETH_IN_DELAY_MASK 0x1
+#define ETH_TOGGLING_RST_MASK 0x2
+#define ETH_IN_RESET_MASK 0x4
+#define ETH_CONNECTING_MASK 0x8
+#define ETH_CONNECTED_MASK 0x10
+
+
+typedef enum {
+	ETH_NOT_SETUP = 0,
+	ETH_TOGGLE_RESET = ETH_TOGGLING_RST_MASK,
+	ETH_DELAY_TOGGLE_RESET = (ETH_TOGGLING_RST_MASK | ETH_IN_DELAY_MASK),
+	ETH_DELAY_IN_RESET = (ETH_IN_RESET_MASK | ETH_IN_DELAY_MASK),
+  ETH_CONNECTING = ETH_CONNECTING_MASK,
+  ETH_CONNECTING_DELAY = (ETH_CONNECTING_MASK | ETH_IN_DELAY_MASK),
+	ETH_CONNECTED_MAINTAIN = ETH_CONNECTED_MASK,
+	ETH_CONNECTED_DELAY_MAINTAIN = (ETH_CONNECTED_MASK | ETH_IN_DELAY_MASK)
+} EthernetState;
+
+#define MQTT_STATE_IN_DELAY_MASK 0x1
+#define MQTT_STATE_CONNECTING_MASK 0x2
+#define MQTT_STATE_CONNECTED_MASK 0x4
+
+typedef enum {
+	MQTT_STATE_NOT_SETUP = 0,
+	MQTT_STATE_CONNECTING = MQTT_STATE_CONNECTING_MASK,
+	MQTT_STATE_DELAY = (MQTT_STATE_CONNECTING_MASK | MQTT_STATE_IN_DELAY_MASK),
+	MQTT_STATE_CONNECTED = MQTT_STATE_CONNECTED_MASK
+} MqttState;
+
+#endif
+
+
+
+
