@@ -89,7 +89,7 @@ void tcb_update_leds(void);
 
 SimpleTaskScheduler taskScheduler(4, TS_MILLIS);
 uint8_t t_status_led = taskScheduler.addTask(tcb_update_leds, TASK_RATE_BLINK_PERIOD, true);
-uint8_t t_publish_temp = taskScheduler.addTask(tcb_publish_temp, tcb_publish_temp, true);
+uint8_t t_publish_temp = taskScheduler.addTask(tcb_publish_temp, TASK_RATE_TEMPERATURE, true);
 uint8_t t_publish_car0 = taskScheduler.addTask(tcb_publish_car0, TASK_RATE_CAR0_STATE, true);
 uint8_t t_publish_car1 = taskScheduler.addTask(tcb_publish_car1, TASK_RATE_CAR1_STATE, true);
 
